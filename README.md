@@ -12,4 +12,4 @@ We're using [docker-compose](https://docs.docker.com/compose/) to manage our inf
 
 The next step is set the relational database. To do so, access the `/sql-database` directory and read its README file.
 
-After setting up the database, you can start the `/fetcher` and `/mirror` services. Go to their directories and read their README files to do that.
+After setting up the database, you can start the `/fetcher`, `/mirror` and `/analyzer` services. Go to their directories and read their README files to do that.
