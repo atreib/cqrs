@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model actions {
+  id          String @id @db.VarChar(36)
+  external_id String @unique @db.VarChar(36)
+  resource_id String @db.VarChar(36)
+  type        String @db.VarChar(30)
+}
+
+model projects {
+  id          String  @id @db.VarChar(36)
+  external_id String  @unique @db.VarChar(36)
+  name        String  @db.VarChar(50)
+  ready       Boolean
+}
+
+model resources {
+  id          String  @id @db.VarChar(36)
+  external_id String  @unique @db.VarChar(36)
+  project_id  String  @db.VarChar(36)
+  type        String  @db.VarChar(30)
+  label       String  @db.VarChar(50)
+  description String? @db.VarChar(120)
+}
+
+model schema_migrations {
+  version BigInt  @id
+  dirty   Boolean
+}

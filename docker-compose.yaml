@@ -1,0 +1,45 @@
+version: "3"
+
+services: 
+  sqldb: 
+    image: postgres
+    container_name: crawler-sqldb
+    restart: always
+    tty: true
+    volumes:
+      - ./sql-database/.data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=123456
+    networks:
+      - crawlernet
+    ports:
+      - "54323:5432"
+
+  queue:
+    image: rabbitmq:3-management-alpine
+    container_name: crawler-queue
+    ports:
+        - 5672:5672
+        - 15672:15672
+    volumes:
+        - ./.queue/data/:/var/lib/rabbitmq/
+        - ./.queue/rabbitmq/log/:/var/log/rabbitmq
+    networks:
+        - crawlernet
+
+  nosqldb:
+    image: mongo:5.0
+    container_name: crawler-nosqldb
+    ports:
+      - 27017:27017
+    networks:
+      - crawlernet
+    volumes:
+      - ./.mongodb/data:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=crawler
+      - MONGO_INITDB_ROOT_PASSWORD=123456
+
+networks:
+  crawlernet:
+    driver: bridge

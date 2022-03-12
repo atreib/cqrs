@@ -1,0 +1,22 @@
+CREATE TABLE IF NOT EXISTS projects(
+   id VARCHAR (36) PRIMARY KEY,
+   external_id VARCHAR (36) UNIQUE NOT NULL,
+   name VARCHAR (50) NOT NULL,
+   ready BOOLEAN NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS resources(
+   id VARCHAR (36) PRIMARY KEY,
+   external_id VARCHAR (36) UNIQUE NOT NULL,
+   project_id VARCHAR (36) NOT NULL,
+   type VARCHAR (30) NOT NULL,
+   label VARCHAR (50) NOT NULL,
+   description VARCHAR (120)
+);
+
+CREATE TABLE IF NOT EXISTS actions(
+   id VARCHAR (36) PRIMARY KEY,
+   external_id VARCHAR (36) UNIQUE NOT NULL,
+   resource_id VARCHAR (36) NOT NULL,
+   type VARCHAR (30) NOT NULL
+);
