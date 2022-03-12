@@ -1,6 +1,6 @@
 # Mirror service
 
-The mirror service consumes a queue on RabbitMQ, in order to discover every new project that is being crawled. At each new project (ie, a new message in the queue), the Mirror service gets the project's data in the relational database and checks if the `ready` flag is checked. If so, it insert the project whole data as a document in a non-relational database.
+The mirror service consumes a queue on RabbitMQ, in order to discover every new project that is being fetched. At each new project (ie, a new message in the queue), the Mirror service gets the project's data in the relational database and checks if the `ready` flag is checked. If so, it insert the project whole data as a document in a non-relational database.
 
 To communicate with the relational database, we'll use [Prisma](https://www.prisma.io/) as our ORM. Its setup is very straight-forward and Prisma have great docs. But, in summary, we've ran `npx prisma init` to initialize the Prisma library. Then, we've set our connection string in our `.env` file (which you can copy and paste from the `.env.copy` file), then we run `npx prisma db pull` to generate Prisma's schema, and `npx prisma generate` to generate the Prisma Client. Doing so, we can use the PrismaClient directly in our code, by importing it from `@prisma/client`.
 

@@ -6,39 +6,39 @@ export const PROJECT = {
 };
 
 enum Services {
-    S3 = "s3",
-    CLOUDWATCH = "cloudwatch",
+    DELIVERY = "delivery",
+    SALES = "sales",
 }
 
 export const RESOURCES = [
     {
         id: uuidv4(),
-        type: Services.S3,
-        label: "My S3",
+        type: Services.DELIVERY,
+        label: "Food delivery",
         description: undefined
     },
     {
         id: uuidv4(),
-        type: Services.CLOUDWATCH,
-        label: "My Cloudwatch",
+        type: Services.SALES,
+        label: "Sales",
         description: "Brief description"
     }
 ];
 
 enum ActionType {
-    WRITE = "write",
-    READ = "read",
+    DEPOSIT = "deposit",
+    WITHDRAW = "withdraw",
     MANAGE = "manage",
 }
 
 export const ACTIONS = [
     {
         id: uuidv4(),
-        type: ActionType.WRITE,
+        type: ActionType.DEPOSIT,
     },
     {
         id: uuidv4(),
-        type: ActionType.READ,
+        type: ActionType.WITHDRAW,
     },
     {
         id: uuidv4(),

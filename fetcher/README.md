@@ -1,6 +1,6 @@
-# Crawler service
+# Fetcher service
 
-The crawler service mocks highy expensive operations of data crawling. Through pre-existing mocks, we'll use some timeouts to fake slow fetching operations and insert the "fetched" data into our relational database.
+The fetcher service mocks highy expensive operations of data fetching. Through pre-existing mocks, we'll use some timeouts to fake slow fetching operations and insert the data into our relational database.
 
 To communicate with the relational database, we'll use [Prisma](https://www.prisma.io/) as our ORM. Its setup is very straight-forward and Prisma have great docs. But, in summary, we've ran `npx prisma init` to initialize the Prisma library. Then, we've set our connection string in our `.env` file (which you can copy and paste from the `.env.copy` file), then we run `npx prisma db pull` to generate Prisma's schema, and `npx prisma generate` to generate the Prisma Client. Doing so, we can use the PrismaClient directly in our code, by importing it from `@prisma/client`.
 
